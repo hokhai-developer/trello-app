@@ -5,6 +5,7 @@
 $font-family: 'Nunito', sans-serif;
 $text-color-normal: #676a79;
 $text-color-bold: #14191e;
+$text-color-white: white;
 //color
 $color-black: black;
 $color-white: white;
@@ -26,14 +27,39 @@ $color-gray-600: #6c757d;
 $color-gray-700: #495057;
 $color-gray-800: #343a40;
 $color-gray-900: #212529;
-//color web
-$color-primary: #ff0000;
-$color-secondary: #0091ff;
 $color-success: #0cbc87;
 $color-info: #4f9ef8;
 $color-warning: #f7c32e;
 $color-danger: #d6293e;
 $color-light: #eef0f2;
+
+// web
+//block size
+$app-bar-height: 44px;
+$side-bar-max-width: 0px; //272px
+$side-bar-min-width: 72px;
+//color
+$color-primary: #0091ff;
+$border-color: $color-purple;
+$side-bar-background-color: #0066a0;
+$column-background-color: #ebecf0;
+//border
+$border-radius-2: 2px;
+$border-radius-4: 4px;
+//space
+$padding-4: 4px;
+$padding-8: 8px;
+$padding-10: 10px;
+$padding-20: 20px;
+
+$margin-6: 6px;
+
+$gap-6: 6px;
+$gap-8: 8px;
+$gap-10: 10px;
+
+//width && hight
+$container-max-width: 1334px;
 
 *,
 *::after,

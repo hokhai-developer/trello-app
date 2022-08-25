@@ -1,0 +1,20 @@
+@import 'src/scss/base';
+
+.wrapper {
+  position: relative;
+  flex: 1;
+  height: calc(100vh - $app-bar-height - 1px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: min(
+    calc($container-max-width - $side-bar-max-width),
+    calc(100vw - $side-bar-max-width)
+  );
+  &.close-side-bar {
+    max-width: min(
+      calc($container-max-width - $side-bar-min-width),
+      calc(100vw - $side-bar-min-width)
+    );
+  }
+}

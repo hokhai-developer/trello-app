@@ -1,0 +1,14 @@
+@import 'src/scss/base';
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .body {
+    background-color: $color-indigo;
+    .body-container {
+      display: flex;
+    }
+  }
+}

@@ -1,8 +1,11 @@
+import MainLayout from '~/layouts/MainLayout';
+import BoardPage from '~/pages/BoardPage/BoardPage';
+
 function App() {
   return (
-    <div className="App">
-      <p>hello reactJS</p>
-    </div>
+    <MainLayout>
+      <BoardPage />
+    </MainLayout>
   );
 }
 

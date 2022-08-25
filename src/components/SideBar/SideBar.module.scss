@@ -1,0 +1,14 @@
+@import 'src/scss/base';
+
+.wrapper {
+  position: relative;
+  width: $side-bar-max-width;
+  flex-shrink: 0;
+  border-right: 1px solid $color-gray-400;
+  background-color: $color-indigo;
+  .sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+}

@@ -1,0 +1,13 @@
+@import 'src/scss/base';
+
+.wrapper {
+  position: sticky;
+  height: calc($app-bar-height + 1px);
+  top: 0;
+  background-color: $color-indigo;
+  border-bottom: 1px solid $color-gray-400;
+  z-index: 100;
+}
+.header {
+  height: 100%;
+}

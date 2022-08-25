@@ -1,0 +1,7 @@
+@import 'src/scss/base';
+
+.wrapper {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  overflow: hidden;
+}

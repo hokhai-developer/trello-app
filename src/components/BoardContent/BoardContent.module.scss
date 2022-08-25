@@ -1,0 +1,32 @@
+@import 'src/scss/base';
+
+.wrapper {
+  flex: 1;
+  padding: $padding-10 $padding-10 $padding-20;
+  margin-bottom: $margin-6;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0 $gap-10;
+  overflow: overlay;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    border-radius: 18px;
+    background-color: $color-gray-600;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 18px;
+    background-color: $color-gray-400;
+  }
+
+  .list-column {
+    display: flex;
+    gap: 0 $gap-10;
+  }
+}
