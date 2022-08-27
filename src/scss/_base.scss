@@ -36,8 +36,10 @@ $color-light: #eef0f2;
 // web
 //block size
 $app-bar-height: 44px;
-$side-bar-max-width: 0px; //272px
+$board-bar-height: 52px;
+$side-bar-max-width: 272px;
 $side-bar-min-width: 72px;
+$column-width: 272px;
 //color
 $color-primary: #0091ff;
 $border-color: $color-purple;
@@ -48,11 +50,17 @@ $border-radius-2: 2px;
 $border-radius-4: 4px;
 //space
 $padding-4: 4px;
+$padding-6: 6px;
 $padding-8: 8px;
 $padding-10: 10px;
+$padding-12: 12px;
 $padding-20: 20px;
 
+$margin-4: 4px;
 $margin-6: 6px;
+$margin-8: 8px;
+$margin-10: 10px;
+$margin-12: 12px;
 
 $gap-6: 6px;
 $gap-8: 8px;

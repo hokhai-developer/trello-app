@@ -3,11 +3,13 @@ import classNames from 'classnames/bind';
 import styles from './Column.module.scss';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+
 import PropTypes from 'prop-types';
 import { TextareaAutosize } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
+import MenuListActions from '~/components/MenuListActions';
 
 const cx = classNames.bind(styles);
 const ColumnHeader = (props) => {
@@ -157,27 +159,7 @@ const ColumnHeader = (props) => {
               },
             }}
           >
-            <div
-              onClick={() => {
-                handleCloseMenu();
-              }}
-            >
-              item 1 321 321
-            </div>
-            <div
-              onClick={() => {
-                handleCloseMenu();
-              }}
-            >
-              item 2
-            </div>
-            <div
-              onClick={() => {
-                handleCloseMenu();
-              }}
-            >
-              item 3
-            </div>
+            <MenuListActions handleCloseMenu={handleCloseMenu} />
           </Menu>
         </header>
       )}

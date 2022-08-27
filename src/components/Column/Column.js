@@ -12,7 +12,6 @@ const Column = (props) => {
     <div className={cx('wrapper-column')}>
       <ColumnHeader />
       <ColumnBody />
-      <ColumnBody />
       <ColumnFooter />
     </div>
   );

@@ -9,6 +9,9 @@
     background-color: $color-indigo;
     .body-container {
       display: flex;
+      .body-content {
+        flex: 1;
+      }
     }
   }
 }
