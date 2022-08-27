@@ -116,8 +116,8 @@ const ColumnHeader = (props) => {
         <header className={cx('wrapper-column-header')}>
           <h2
             className={cx('column-title')}
-            onMouseDown={(e) => {
-              e.preventDefault();
+            onMouseDown={(e) => {}}
+            onClick={(e) => {
               setShowEditTitle(true);
             }}
           >
