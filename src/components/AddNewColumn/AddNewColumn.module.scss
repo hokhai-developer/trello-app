@@ -3,6 +3,7 @@
 .wrapper {
   width: $column-width;
   color: $text-color-white;
+  flex-shrink: 0;
   .before-add {
     display: flex;
     align-items: center;

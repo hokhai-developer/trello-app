@@ -1,25 +1,27 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Column.module.scss';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-
 import PropTypes from 'prop-types';
 import { TextareaAutosize } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import MenuListActions from '~/components/MenuListActions';
+import { useDispatch } from 'react-redux';
+import boardsSlice from '~/redux/slices/boardsSlice';
 
 const cx = classNames.bind(styles);
-const ColumnHeader = (props) => {
-  const [title, setTitle] = useState('quangkhaidev');
+const ColumnHeader = ({ title: headerTitle, columnId, boardId }) => {
+  const [title, setTitle] = useState(headerTitle);
   const [showEditTitle, setShowEditTitle] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [value, setValue] = useState(title);
+  const [value, setValue] = useState(headerTitle);
   const clearBtnRef = useRef(null);
   const cancelRef = useRef(null);
   const textareaRef = useRef(null);
+  const dispatch = useDispatch();
 
   const handleBlur = (e) => {
     if (
@@ -38,13 +40,33 @@ const ColumnHeader = (props) => {
       handleCancel();
       return;
     }
+
     if (e.target.value.trim().length === 0) {
       setValue(title);
+      setShowEditTitle(false);
     } else if (e.target.value.trim() !== title) {
-      //update title
+      //update title to redux
+      if (
+        e.target.value.trim().length === 0 ||
+        e.target.value.trim().length > 32
+      ) {
+        //column title validate false => show case
+        textareaRef?.current.focus();
+        return;
+      }
+      dispatch(
+        boardsSlice.actions.updateTitleColumn({
+          titleColumn: e.target.value.trim(),
+          columnId,
+          boardId,
+        }),
+      );
       setTitle(e.target.value);
+      setValue(e.target.value);
+      setShowEditTitle(false);
+    } else {
+      setShowEditTitle(false);
     }
-    setShowEditTitle(false);
   };
 
   const handleClearValue = () => {
@@ -62,7 +84,6 @@ const ColumnHeader = (props) => {
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
-
   return (
     <>
       {showEditTitle ? (
@@ -159,7 +180,11 @@ const ColumnHeader = (props) => {
               },
             }}
           >
-            <MenuListActions handleCloseMenu={handleCloseMenu} />
+            <MenuListActions
+              handleCloseMenu={handleCloseMenu}
+              columnId={columnId}
+              boardId={boardId}
+            />
           </Menu>
         </header>
       )}

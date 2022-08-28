@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './MenuListActions.module.scss';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import PropTypes from 'prop-types';
+import { ColumnContext } from '~/context/ColumnProvider';
+import { useDispatch } from 'react-redux';
+import boardsSlice from '~/redux/slices/boardsSlice';
 
 const cx = classNames.bind(styles);
-const MenuListActions = ({ handleCloseMenu = () => {} }) => {
+const MenuListActions = ({ handleCloseMenu = () => {}, columnId, boardId }) => {
+  const { setShowAddNewCard } = useContext(ColumnContext);
+  const dispatch = useDispatch();
+  const handleAddNewCard = () => {
+    setShowAddNewCard(true);
+    handleCloseMenu();
+  };
+  const handleDeleteColumn = () => {
+    dispatch(
+      boardsSlice.actions.deleteColumns({
+        columnId,
+        boardId,
+      }),
+    );
+    handleCloseMenu();
+  };
   return (
     <div className={cx('wrapper-list')}>
       <div className={cx('list-header')}>
@@ -19,10 +37,10 @@ const MenuListActions = ({ handleCloseMenu = () => {} }) => {
       </div>
       <div className={cx('divider')}></div>
       <div className={cx('list-body')}>
-        <div className={cx('list-item')}>
+        <div className={cx('list-item')} onClick={handleAddNewCard}>
           <p className={cx('item-title')}>Thêm card mới...</p>
         </div>
-        <div className={cx('list-item')}>
+        <div className={cx('list-item')} onClick={handleDeleteColumn}>
           <p className={cx('item-title')}>Xóa danh sách này...</p>
         </div>
         <div className={cx('list-item')}>

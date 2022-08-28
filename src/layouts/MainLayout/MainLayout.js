@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import AppBar from '~/components/AppBar';
 import SideBar from '~/components/SideBar';
 import Container from '~/components/Container';
+import { Outlet } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 const MainLayout = ({ children, className }) => {
@@ -14,7 +15,9 @@ const MainLayout = ({ children, className }) => {
       <div className={cx('body')}>
         <Container className={cx('body-container')}>
           <SideBar />
-          <div className={cx('body-content')}>{children}</div>
+          <div className={cx('body-content')}>
+            <Outlet />
+          </div>
         </Container>
       </div>
     </div>

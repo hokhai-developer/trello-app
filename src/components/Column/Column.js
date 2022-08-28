@@ -5,15 +5,19 @@ import PropTypes from 'prop-types';
 import ColumnHeader from './ColumnHeader';
 import ColumnBody from './ColumnBody';
 import ColumnFooter from './ColumnFooter';
+import ColumnProvider from '~/context/ColumnProvider';
 
 const cx = classNames.bind(styles);
-const Column = (props) => {
+const Column = ({ column }) => {
+  const { cards, title, id, boardId } = column;
   return (
-    <div className={cx('wrapper-column')}>
-      <ColumnHeader />
-      <ColumnBody />
-      <ColumnFooter />
-    </div>
+    <ColumnProvider>
+      <div className={cx('wrapper-column')}>
+        <ColumnHeader title={title} columnId={id} boardId={boardId} />
+        {cards?.length > 0 && <ColumnBody cards={cards} />}
+        <ColumnFooter columnId={id} boardId={boardId} />
+      </div>
+    </ColumnProvider>
   );
 };
 

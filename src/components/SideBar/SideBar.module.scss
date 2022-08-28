@@ -10,5 +10,17 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    .sticky-content {
+      display: flex;
+      flex-direction: column;
+      margin: $margin-10 0;
+      gap: $gap-10 0;
+      .active {
+        color: $color-orange;
+      }
+      .side-bar-item {
+        width: 100%;
+      }
+    }
   }
 }
