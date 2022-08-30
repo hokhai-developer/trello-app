@@ -4,7 +4,6 @@
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
-  gap: 0 $gap-10;
   height: 100%;
   padding: $padding-10 $padding-10 0;
   margin-bottom: $margin-4;
@@ -26,8 +25,9 @@
     background-color: $color-gray-400;
   }
 
-  .list-column {
-    display: flex;
-    gap: 0 $gap-10;
+  .cards-drop-preview {
+    background-color: rgba(150, 150, 200, 0.1);
+    border: 1px dashed #abc;
+    margin: 5px 45px 5px 5px;
   }
 }

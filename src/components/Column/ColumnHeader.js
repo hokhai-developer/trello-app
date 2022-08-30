@@ -14,7 +14,7 @@ import boardsSlice from '~/redux/slices/boardsSlice';
 import columnsSlice from '~/redux/slices/columnsSlice';
 
 const cx = classNames.bind(styles);
-const ColumnHeader = ({ title: headerTitle, columnId, boardId }) => {
+const ColumnHeader = ({ title: headerTitle, columnId, boardId, className }) => {
   const [title, setTitle] = useState(headerTitle);
   const [showEditTitle, setShowEditTitle] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -135,7 +135,7 @@ const ColumnHeader = ({ title: headerTitle, columnId, boardId }) => {
           </div>
         </div>
       ) : (
-        <header className={cx('wrapper-column-header')}>
+        <header className={cx('wrapper-column-header', className)}>
           <h2
             className={cx('column-title')}
             onMouseDown={(e) => {}}

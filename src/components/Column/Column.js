@@ -13,8 +13,13 @@ const Column = ({ column }) => {
   return (
     <ColumnProvider>
       <div className={cx('wrapper-column')}>
-        <ColumnHeader title={title} columnId={id} boardId={boardId} />
-        {cards?.length > 0 && <ColumnBody cards={cards} />}
+        <ColumnHeader
+          title={title}
+          columnId={id}
+          boardId={boardId}
+          className={'column-drag-handle'}
+        />
+        <ColumnBody cards={cards} column={column} />
         <ColumnFooter columnId={id} boardId={boardId} />
       </div>
     </ColumnProvider>

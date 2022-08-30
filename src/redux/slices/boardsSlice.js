@@ -40,6 +40,19 @@ const boardsSlice = createSlice({
       state.push(newBoard);
       return state;
     },
+    applyDragColum: (state, actions) => {
+      const { addedIndex, removedIndex, boardId, columnId } = actions.payload;
+      const boardIndex = state.findIndex((board) => board.id === boardId);
+      if (boardIndex === -1) return state;
+      if (addedIndex > removedIndex) {
+        state[boardIndex].columnOrder.splice(addedIndex + 1, 0, columnId);
+        state[boardIndex].columnOrder.splice(removedIndex, 1);
+      } else {
+        state[boardIndex].columnOrder.splice(removedIndex, 1);
+        state[boardIndex].columnOrder.splice(addedIndex, 0, columnId);
+      }
+      return state;
+    },
   },
 });
 

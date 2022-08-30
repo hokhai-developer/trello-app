@@ -119,3 +119,7 @@ a {
   color: var(--text-color);
   text-decoration: none;
 }
+
+.smooth-dnd-container.vertical {
+  min-height: 10px;
+}

@@ -10,6 +10,9 @@
   background-color: $column-background-color;
   border-radius: $border-radius-4;
   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  &:first-child {
+    margin-right: $gap-10;
+  }
 }
 
 //column-header
@@ -175,16 +178,39 @@
     display: flex;
     flex-direction: column;
     gap: $gap-6 0;
+
+    .card-ghost {
+      transition: transform 0.18s ease;
+      transform: rotateZ(5deg);
+      font-weight: bold;
+    }
+
+    .card-ghost-drop {
+      transition: transform 0.18s ease-in-out;
+      transform: rotateZ(0deg);
+      font-weight: bold;
+    }
+
+    .drop-preview {
+      background-color: rgba(150, 150, 200, 0.1);
+      border: 1px dashed #abc;
+      margin: 5px;
+    }
+
     .card-item {
       margin: 0 $margin-8;
       padding: 0 $padding-8;
       border-radius: $border-radius-2;
       background-color: $color-white;
       box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+      cursor: pointer;
       .item-title {
         font-size: 16px;
         line-height: 1.5;
         color: $text-color-normal;
+      }
+      &:first-child {
+        margin-top: 10px;
       }
     }
   }

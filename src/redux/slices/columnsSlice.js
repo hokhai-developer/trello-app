@@ -57,6 +57,32 @@ const columnsSlice = createSlice({
       }
       return state;
     },
+    applyDragCardOrder: (state, actions) => {
+      const { addedIndex, removedIndex, cardId, columId } = actions.payload;
+      const columnIndex = state.findIndex((column) => column.id === columId);
+      if (columId === -1) {
+        alert('khong tim thay colum hien tai');
+        return state;
+      }
+      if (addedIndex === null) {
+        state[columnIndex].cardOrder.splice(removedIndex, 1);
+        return state;
+      }
+      if (removedIndex === null) {
+        state[columnIndex].cardOrder.splice(addedIndex, 0, cardId);
+        return state;
+      }
+      if (removedIndex < addedIndex) {
+        state[columnIndex].cardOrder.splice(addedIndex + 1, 0, cardId);
+        state[columnIndex].cardOrder.splice(removedIndex, 1);
+        return state;
+      } else {
+        state[columnIndex].cardOrder.splice(removedIndex, 1);
+        state[columnIndex].cardOrder.splice(addedIndex, 0, cardId);
+        return state;
+      }
+      // state[columnIndex].cardOrder.splice
+    },
   },
 });
 
