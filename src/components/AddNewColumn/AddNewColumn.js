@@ -8,6 +8,7 @@ import { TextareaAutosize } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import boardsSlice from '~/redux/slices/boardsSlice';
 import uuid from 'react-uuid';
+import columnsSlice from '~/redux/slices/columnsSlice';
 
 const cx = classNames.bind(styles);
 const AddNewColumn = ({ boardId }) => {
@@ -29,11 +30,18 @@ const AddNewColumn = ({ boardId }) => {
       }
       return;
     }
+    const columnId = uuid();
     dispatch(
-      boardsSlice.actions.addNewColumn({
+      columnsSlice.actions.addNewColumn({
         title: titleColumn,
-        boardId: boardId,
-        id: uuid(),
+        boardId,
+        id: columnId,
+      }),
+    );
+    dispatch(
+      boardsSlice.actions.updateColumOrderOneBoard({
+        boardId,
+        columnId,
       }),
     );
     setTextValue('');

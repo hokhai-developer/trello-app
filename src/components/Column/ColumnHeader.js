@@ -11,6 +11,7 @@ import Zoom from '@mui/material/Zoom';
 import MenuListActions from '~/components/MenuListActions';
 import { useDispatch } from 'react-redux';
 import boardsSlice from '~/redux/slices/boardsSlice';
+import columnsSlice from '~/redux/slices/columnsSlice';
 
 const cx = classNames.bind(styles);
 const ColumnHeader = ({ title: headerTitle, columnId, boardId }) => {
@@ -55,7 +56,7 @@ const ColumnHeader = ({ title: headerTitle, columnId, boardId }) => {
         return;
       }
       dispatch(
-        boardsSlice.actions.updateTitleColumn({
+        columnsSlice.actions.updateTitleColumn({
           titleColumn: e.target.value.trim(),
           columnId,
           boardId,

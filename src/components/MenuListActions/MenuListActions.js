@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { ColumnContext } from '~/context/ColumnProvider';
 import { useDispatch } from 'react-redux';
 import boardsSlice from '~/redux/slices/boardsSlice';
+import columnsSlice from '~/redux/slices/columnsSlice';
 
 const cx = classNames.bind(styles);
 const MenuListActions = ({ handleCloseMenu = () => {}, columnId, boardId }) => {
@@ -17,7 +18,13 @@ const MenuListActions = ({ handleCloseMenu = () => {}, columnId, boardId }) => {
   };
   const handleDeleteColumn = () => {
     dispatch(
-      boardsSlice.actions.deleteColumns({
+      columnsSlice.actions.deleteColumn({
+        columnId,
+        boardId,
+      }),
+    );
+    dispatch(
+      boardsSlice.actions.deletedOneColumnOrderOneBoard({
         columnId,
         boardId,
       }),

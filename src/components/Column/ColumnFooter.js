@@ -11,6 +11,8 @@ import boardsSlice from '~/redux/slices/boardsSlice';
 import uuid from 'react-uuid';
 import { ColumnContext } from '~/context/ColumnProvider';
 import { current } from '@reduxjs/toolkit';
+import cardsSlice from '~/redux/slices/cardsSlice';
+import columnsSlice from '~/redux/slices/columnsSlice';
 
 const cx = classNames.bind(styles);
 const ColumnFooter = ({ boardId, columnId }) => {
@@ -19,10 +21,6 @@ const ColumnFooter = ({ boardId, columnId }) => {
   const dispatch = useDispatch();
 
   const { showAddNewCard, setShowAddNewCard } = useContext(ColumnContext);
-
-  // useEffect(() => {
-  //   setShowAdd(showAddNewCard);
-  // }, [showAddNewCard]);
 
   const handleClearTextValue = () => {
     setTextValue('');
@@ -42,12 +40,20 @@ const ColumnFooter = ({ boardId, columnId }) => {
     }
 
     //update new card to redux
+    const cardId = uuid();
     dispatch(
-      boardsSlice.actions.addNewCard({
+      cardsSlice.actions.addNewCard({
         cardTitle: textValue.trim(),
         boardId,
         columnId,
-        cardId: uuid(),
+        cardId,
+      }),
+    );
+    dispatch(
+      columnsSlice.actions.updateCardOrder({
+        boardId,
+        columnId,
+        cardId,
       }),
     );
     setTextValue('');
